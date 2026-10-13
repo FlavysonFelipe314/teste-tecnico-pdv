@@ -11,8 +11,8 @@ Reserve 8 GB de memória para o laboratório e acesso à internet no primeiro bu
 Java, Maven, Node, Go e Python não precisam estar instalados no host.
 
 ```bash
-git clone https://github.com/FlavysonFelipe314/teste-t-cnico-pdv.git
-cd teste-t-cnico-pdv
+git clone https://github.com/FlavysonFelipe314/teste-tecnico-pdv.git
+cd teste-tecnico-pdv
 docker compose up --build -d
 docker compose exec -T fiscal-simulado python - < scripts/ready.py
 ```
