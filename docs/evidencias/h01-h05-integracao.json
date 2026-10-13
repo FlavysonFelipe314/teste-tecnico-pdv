@@ -1,0 +1,85 @@
+{
+  "h01": {
+    "below_need": 6,
+    "equal_need": 0,
+    "above_need": 0,
+    "invalid_orders_created": 0
+  },
+  "h05_comparison": {
+    "same_store_requests": 3,
+    "without_cache_needs_queries": 3,
+    "with_cache_needs_queries": 0,
+    "cache_hits": 3,
+    "version_reads": 3,
+    "note": "Version lookups remain; savings apply to the stock/product join, not all SQL statements."
+  },
+  "h02_h03": {
+    "identical_concurrent_calls": 2,
+    "center_water": 96,
+    "aurora_water": 8,
+    "water": [
+      6,
+      4,
+      2
+    ],
+    "coffee": [
+      2,
+      0,
+      2
+    ]
+  },
+  "h04_unavailable": {
+    "receipt": "CONFIRMED",
+    "document": "RETRY_WAIT",
+    "attempts": 1
+  },
+  "h04_restart_before": {
+    "document": "RETRY_WAIT",
+    "protocol": "SIM-doc-921a2660-6d11-4d86-9a5b-327deeff66ce",
+    "xml_stored": false
+  },
+  "h04_restart_after": {
+    "document": "AUTHORIZED_SIMULATION",
+    "same_protocol": true,
+    "stock_unchanged": true
+  },
+  "h04_lost_response": {
+    "document_key": "doc-28660097-cbd8-4ca7-a49f-cfd97735cb43",
+    "attempts": 2,
+    "document": "AUTHORIZED_SIMULATION"
+  },
+  "h04_rejection": {
+    "document": "REJECTED_SIMULATION",
+    "attempts": 1,
+    "reason": "Dados rejeitados no cenário de laboratório"
+  },
+  "h05_redis_down": {
+    "query_succeeded": true,
+    "receipt_succeeded": true,
+    "updated_need": 4,
+    "cache_errors_delta": 2
+  },
+  "h04_attempt_limit": {
+    "document": "FAILED",
+    "attempts": 3
+  },
+  "h04_manual_reprocess": {
+    "document": "AUTHORIZED_SIMULATION",
+    "attempts": 4,
+    "stock_unchanged": true
+  },
+  "h04_xml": {
+    "authorized_api": true,
+    "unauthenticated_api_status": 401,
+    "private_minio_status": 403
+  },
+  "h05_final_metrics": {
+    "cache_misses": 1,
+    "cache_enabled": true,
+    "cache_hits": 1,
+    "version_db_queries": 26,
+    "cache_errors": 24,
+    "needs_db_queries": 28,
+    "ttl_seconds": 60
+  }
+}

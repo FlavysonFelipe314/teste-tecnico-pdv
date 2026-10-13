@@ -1,0 +1,23 @@
+Revisão final — H01 a H05
+
+H2 — relatórios do mvn verify executado no build Docker:
+Test set: fiction.brisa27.replenishment.H01ReplenishmentApiTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.041 s -- in fiction.brisa27.replenishment.H01ReplenishmentApiTest
+Test set: fiction.brisa27.replenishment.H02H03ConfirmationApiTest
+Tests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.609 s -- in fiction.brisa27.replenishment.H02H03ConfirmationApiTest
+Test set: fiction.brisa27.replenishment.H04DocumentRecoveryTest
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.812 s -- in fiction.brisa27.replenishment.H04DocumentRecoveryTest
+Test set: fiction.brisa27.replenishment.H05NeedsCacheTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.643 s -- in fiction.brisa27.replenishment.H05NeedsCacheTest
+Test set: fiction.brisa27.replenishment.NeedCalculatorTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in fiction.brisa27.replenishment.NeedCalculatorTest
+Total: 56 testes, zero falhas/erros.
+
+MySQL 8.4.5 — banco isolado:
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.524 s -- in fiction.brisa27.replenishment.H01ReplenishmentApiTest
+[INFO] Tests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.90 s -- in fiction.brisa27.replenishment.H02H03ConfirmationApiTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.982 s -- in fiction.brisa27.replenishment.H05NeedsCacheTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.873 s -- in fiction.brisa27.replenishment.H04DocumentRecoveryTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in fiction.brisa27.replenishment.NeedCalculatorTest
+[INFO] Tests run: 56, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

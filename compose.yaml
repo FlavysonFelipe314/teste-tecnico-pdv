@@ -1,0 +1,77 @@
+name: rota-clara-lab
+services:
+  mysql:
+    image: mysql:8.4.5@sha256:679e7e924f38a3cbb62a3d7df32924b83f7321a602d3f9f967c01b3df18495d6
+    environment:
+      MYSQL_DATABASE: rota_clara
+      MYSQL_USER: rota_clara
+      MYSQL_PASSWORD: lab-only-password
+      MYSQL_ROOT_PASSWORD: lab-only-root
+    ports: ["127.0.0.1:13306:3306"]
+    volumes: ["mysql-data:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD", "mysql", "-h", "127.0.0.1", "-urota_clara", "-plab-only-password", "rota_clara", "-e", "SELECT 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 40
+  redis:
+    image: redis:7.4.3-alpine@sha256:f773b35a95e170d92dd4214a3ec4859b1b7960bf56896ae687646d695f311187
+    ports: ["127.0.0.1:16379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  rabbitmq:
+    image: rabbitmq:4.1.0-management-alpine@sha256:770948395acde6a1faf449f8570dc1f0365eb573dba1c6c89d060e1fcbfe199c
+    environment:
+      RABBITMQ_DEFAULT_USER: rota_clara
+      RABBITMQ_DEFAULT_PASS: lab-only-password
+    ports: ["127.0.0.1:15673:5672", "127.0.0.1:15674:15672"]
+    volumes: ["rabbit-data:/var/lib/rabbitmq"]
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  minio:
+    image: rota-clara-lab-minio
+    build: ./minio
+    command: server /data --console-address :9001
+    environment:
+      MINIO_ROOT_USER: rota_clara
+      MINIO_ROOT_PASSWORD: lab-only-password
+    ports: ["127.0.0.1:19000:9000", "127.0.0.1:19001:9001"]
+    volumes: ["minio-data:/data"]
+  eureka:
+    image: rota-clara-lab-eureka
+    build: ./eureka
+    ports: ["127.0.0.1:18761:8761"]
+  fiscal-simulado:
+    image: rota-clara-lab-fiscal-simulado
+    build: ./fiscal
+    ports: ["127.0.0.1:18090:8090"]
+    volumes: ["fiscal-data:/data"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8090/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  core:
+    image: rota-clara-lab-core
+    build: ./core
+    depends_on:
+      mysql: {condition: service_healthy}
+      minio: {condition: service_started}
+      eureka: {condition: service_started}
+    ports: ["127.0.0.1:18080:8080"]
+  admin:
+    image: rota-clara-lab-admin
+    build: ./admin
+    depends_on: [core]
+    ports: ["127.0.0.1:13000:80"]
+volumes:
+  mysql-data:
+  rabbit-data:
+  minio-data:
+  fiscal-data:

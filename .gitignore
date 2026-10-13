@@ -1,0 +1,31 @@
+# Material interno de avaliação, caso seja copiado para esta raiz.
+avaliador/
+
+# Configuração local; exemplos podem ser compartilhados.
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Dependências e arquivos gerados.
+node_modules/
+target/
+dist/
+coverage/
+__pycache__/
+*.py[cod]
+*.log
+
+# Arquivos locais do sistema operacional.
+.DS_Store
+Thumbs.db
+
+# Configurações pessoais e credenciais fora do laboratório.
+.aws/
+.codex/
+.agents/
+.ssh/
+.idea/
+.vscode/
+*.pem
+*.key

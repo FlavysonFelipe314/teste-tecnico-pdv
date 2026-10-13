@@ -1,0 +1,2 @@
+Revisão final: regressão no Chromium com API determinística; integrações reais verificadas separadamente.
+UI OK: histórico 6/4/2, confirmação bloqueada, emissão atualizada automaticamente, protocolo, reprocessamento só do Gestor, XML e contadores.
